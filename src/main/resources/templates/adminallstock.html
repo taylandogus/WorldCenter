@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hisse Listesi</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+        table {
+            margin: 20px auto;
+            width: 80%;
+        }
+        th, td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Hisse Listesi</h1>
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Hisse Sembolü</th>
+            <th>Hisse Adı</th>
+            <th>Fiyat</th>
+            <th>İşlemler</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="stock : ${stocks}">
+            <td th:text="${stock.symbol}"></td>
+            <td th:text="${stock.name}"></td>
+            <td th:text="${stock.price}"></td>
+            <td>
+                <a th:href="@{/editstock/{id}(id=${stock.id})}" class="btn btn-warning btn-sm">
+                    Düzenle
+                </a>
+                <a th:href="@{/deletestock/{id}(id=${stock.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

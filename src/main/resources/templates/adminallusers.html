@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcı Yönetimi</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .button {
+            background-color: #0b3d91;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #0952d1;
+        }
+    </style>
+</head>
+<body>
+<h1>Kullanıcı Yönetimi</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Kullanıcı Adı</th>
+        <th>Email</th>
+        <th>İşlemler</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+            <a th:href="@{/edituser/{id}(id=${user.id})}" class="button">Düzenle</a>
+            <form th:action="@{/deleteuser/{id}(id=${user.id})}" method="post" style="display:inline;">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                <button type="submit" class="button" onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</button>
+            </form>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

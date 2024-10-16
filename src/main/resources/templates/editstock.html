@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Düzenle Hisse</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Düzenle Hisse</h1>
+    <form th:action="@{/updatestock}" method="post">
+        <input type="hidden" th:value="${stock.id}" name="id" />
+        <div class="form-group">
+            <label for="symbol">Sembol:</label>
+            <input type="text" class="form-control" th:value="${stock.symbol}" id="symbol" name="symbol" required />
+        </div>
+        <div class="form-group">
+            <label for="name">İsim:</label>
+            <input type="text" class="form-control" th:value="${stock.name}" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+            <label for="price">Fiyat:</label>
+            <input type="number" class="form-control" th:value="${stock.price}" id="price" name="price" step="0.01" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Güncelle</button>
+        <a href="/adminallstock" class="btn btn-secondary">Geri</a>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

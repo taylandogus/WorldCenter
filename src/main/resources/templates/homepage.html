@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Sayfa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #0b3d91;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #fff;
+            font-size: 2.5rem;
+        }
+
+        nav {
+            background: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            margin-top: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main h2 {
+            color: #fff;
+        }
+
+        main p {
+            color: #ccc;
+        }
+
+        .auth-links {
+            margin: 30px 0;
+        }
+
+        .auth-links a {
+            background-color: #0b3d91;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 0 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .auth-links a:hover {
+            background-color: #0952d1;
+        }
+
+        footer {
+            background: #333;
+            padding: 10px;
+            text-align: center;
+            color: #777;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Trade Center</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a th:href="@{/hakkimizda}">Hakkımızda</a></li>
+        <li><a th:href="@{/iletisim}">İletişim</a></li>
+        <li><a th:href="@{/hizmetlerimiz}">Hizmetlerimiz</a></li>
+        <li><a th:href="@{/yardim}">Yardım</a></li>
+    </ul>
+</nav>
+
+<main>
+    <h1>!!!!!!!!!!!! Bu bir deneme sitesidir !!!!!!!!!!!! </h1>
+    <h2>Hisse Senedi Ticareti İçin Güvenilir Bir Platform</h2>
+    <p>Trade Center, güvenli ve hızlı bir hisse senedi ticareti sunmak için tasarlanmıştır.</p>
+
+    <div class="auth-links">
+        <a th:href="@{/login}">Giriş Yap</a>
+        <a th:href="@{/register}">Kayıt Ol</a>
+    </div>
+</main>
+
+<footer>
+    <p>© 2024 Trade Center. Tüm hakları saklıdır.</p>
+</footer>
+</body>
+</html>

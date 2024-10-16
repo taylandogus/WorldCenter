@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Kayıt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #0b3d91;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #fff;
+            font-size: 2.5rem;
+        }
+
+        main {
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 400px;
+            background-color: #333;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        main h2 {
+            color: #fff;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: #444;
+            color: #fff;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            background: #555;
+            outline: none;
+        }
+
+        button {
+            background-color: #0b3d91;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0952d1;
+        }
+
+        footer {
+            background: #333;
+            padding: 10px;
+            text-align: center;
+            color: #777;
+            font-size: 0.9em;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Trade Center Admin Kayıt</h1>
+</header>
+
+<main>
+    <h2>Admin Oluştur</h2>
+    <form th:action="@{/registeradmin}" method="post" th:object="${admin}">
+        <input type="text" th:field="*{name}" placeholder="Adınız" required>
+        <input type="text" th:field="*{username}" placeholder="Kullanıcı Adı" required>
+        <input type="email" th:field="*{email}" placeholder="E-posta" required>
+        <input type="password" th:field="*{password}" placeholder="Şifre" required>
+        <button type="submit">Kaydet</button>
+    </form>
+</main>
+
+<footer>
+    <p>© 2024 Trade Center. Tüm hakları saklıdır.</p>
+</footer>
+</body>
+</html>

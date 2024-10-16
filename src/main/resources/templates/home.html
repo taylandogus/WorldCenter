@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ana Sayfa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #333;
+      color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    header {
+      background: #007bff;
+      color: #fff;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      margin-top: 20px;
+      background: #444;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      color: #fff;
+    }
+
+    .user-info {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #555;
+      border-radius: 5px;
+      background: #555;
+    }
+
+    .user-info h3 {
+      color: #007bff;
+    }
+
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Ana Sayfa</h1>
+  <nav>
+    <ul>
+      <li><a th:href="@{/home}">Ana Sayfa</a></li>
+      <li><a th:href="@{/transaction}">Son Islemler</a></li>
+      <li><a th:href="@{/userstock}">Hisseler</a></li>
+      <li>
+        <form action="/logout" method="post" style="display: inline;">
+          <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/> <!-- CSRF Token Ekleme -->
+          <button type="submit" style="background: none; border: none; color: white; cursor: pointer; font-weight: bold;">Çıkış Yap</button>
+        </form>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h2>Hoş Geldiniz, <span th:text="${username}">Kullanıcı</span>!</h2>
+  <p>Burada uygulamanızın ana içeriğini gösterebilirsiniz.</p>
+
+  <section class="user-info">
+    <h3>Kullanıcı Bilgileri</h3>
+    <p><strong>Ad:</strong> <span th:text="${name}">Adınız</span></p>
+    <p><strong>Soyad:</strong> <span th:text="${lastname}">Soyadınız</span></p>
+    <p><strong>Email:</strong> <span th:text="${email}">Emailiniz</span></p>
+    <p><strong>ID Numarası:</strong> <span th:text="${idnumber}">ID Numaranız</span></p>
+    <p><strong>Kullanıcı Adı:</strong> <span th:text="${username}">Kullanıcı Adınız</span></p>
+    <p><strong>Bakiyeniz:</strong> <span th:text="${balance}">Bakiyeniz</span> TL</p>
+  </section>
+
+  <section>
+    <h3>Öne Çıkanlar</h3>
+    <p>Burada önemli bilgiler veya içerikler yer alabilir.</p>
+  </section>
+</main>
+
+<footer>
+  <p>© 2024 Trade Center. Tüm hakları saklıdır.</p>
+</footer>
+</body>
+</html>

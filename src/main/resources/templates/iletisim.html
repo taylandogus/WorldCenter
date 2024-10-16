@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #0b3d91;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #fff;
+            font-size: 2.5rem;
+        }
+
+        nav {
+            background: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            margin-top: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main h2 {
+            color: #fff;
+        }
+
+        main p {
+            color: #ccc;
+        }
+
+        footer {
+            background: #333;
+            padding: 10px;
+            text-align: center;
+            color: #777;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Trade Center</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a th:href="@{/hakkimizda}">Hakkımızda</a></li>
+        <li><a th:href="@{/iletisim}">İletişim</a></li>
+        <li><a th:href="@{/hizmetlerimiz}">Hizmetlerimiz</a></li>
+        <li><a th:href="@{/yardim}">Yardım</a></li>
+    </ul>
+</nav>
+
+<main>
+    <h2>İletişim</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a eros nec erat cursus fermentum. Proin gravida nunc at dui euismod, nec consectetur arcu bibendum.</p>
+    <p>Email: info@tradecenter.com</p>
+    <p>Telefon: +90 555 555 5555</p>
+</main>
+
+<footer>
+    <p>© 2024 Trade Center. Tüm hakları saklıdır.</p>
+</footer>
+</body>
+</html>

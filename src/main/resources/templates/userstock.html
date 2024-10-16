@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kullanıcı Sayfası</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #2c3e50;
+      color: #ecf0f1;
+    }
+    h1, h2 {
+      text-align: center;
+      margin: 20px 0;
+      color: #ecf0f1;
+    }
+    .balance {
+      text-align: right;
+      font-weight: bold;
+      margin-right: 20px;
+      color: #ecf0f1;
+    }
+    #anasayfa {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: #ffffff;
+      background-color: #1abc9c;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    #anasayfa:hover {
+      background-color: #16a085;
+      color: #ecf0f1;
+    }
+
+    .table {
+      background-color: #34495e;
+      color: #ecf0f1;
+    }
+    .thead-dark th {
+      background-color: #1abc9c;
+      color: #ffffff;
+    }
+    .btn-success {
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+    .btn-danger {
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+    .btn-success:hover, .btn-danger:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Kullanıcı Sayfası</h1>
+
+  <!-- Bakiye Gösterimi -->
+  <div class="balance">
+    Bakiye: <span th:text="${user.balance}"></span> TL
+  </div>
+
+  <div class="return">
+    <a  id="anasayfa" href="home">Ana Sayfa</a>
+  </div>
+
+  <h2>Kendi Hisselerim</h2>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>Hisse Sembolü</th>
+      <th>Hisse Adı</th>
+      <th>Adet</th>
+      <th>Toplam Değer</th>
+      <th>İşlemler</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="userStock : ${userStocks}">
+      <td th:text="${userStock.stock.symbol}"></td>
+      <td th:text="${userStock.stock.name}"></td>
+      <td th:text="${userStock.quantity}"></td>
+      <td th:text="${userStock.quantity * userStock.stock.price}"></td>
+      <td>
+        <form th:action="@{/buy/{id}(id=${userStock.stock.id})}" method="post" style="display:inline;">
+          <input type="number" name="quantity" min="1" class="form-control" style="width: 80px; display:inline;" required/>
+          <button type="submit" class="btn btn-success btn-sm">Al</button>
+        </form>
+        <form th:action="@{/sell/{id}(id=${userStock.stock.id})}" method="post" style="display:inline;">
+          <input type="number" name="quantity" min="1" class="form-control" style="width: 80px; display:inline;" required/>
+          <button type="submit" class="btn btn-danger btn-sm">Sat</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h2>Tüm Hisseler</h2>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>Hisse Sembolü</th>
+      <th>Hisse Adı</th>
+      <th>Fiyat</th>
+      <th>İşlemler</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="stock : ${stocks}">
+      <td th:text="${stock.symbol}"></td>
+      <td th:text="${stock.name}"></td>
+      <td th:text="${stock.price}"></td>
+      <td>
+        <form th:action="@{/buy/{id}(id=${stock.id})}" method="post" style="display:inline;">
+          <input type="number" name="quantity" min="1" class="form-control" style="width: 80px; display:inline;" required/>
+          <button type="submit" class="btn btn-success btn-sm">Al</button>
+        </form>
+        <form th:action="@{/sell/{id}(id=${stock.id})}" method="post" style="display:inline;">
+          <input type="number" name="quantity" min="1" class="form-control" style="width: 80px; display:inline;" required/>
+          <button type="submit" class="btn btn-danger btn-sm">Sat</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.2.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

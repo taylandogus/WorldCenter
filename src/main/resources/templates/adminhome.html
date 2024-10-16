@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Ana Sayfası</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #0b3d91;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #fff;
+            font-size: 2.5rem;
+        }
+
+        nav {
+            background: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            margin-top: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main h2 {
+            color: #fff;
+        }
+
+        main p {
+            color: #ccc;
+        }
+
+        .auth-links {
+            margin: 30px 0;
+        }
+
+        .auth-links a {
+            background-color: #0b3d91;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 0 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .auth-links a:hover {
+            background-color: #0952d1;
+        }
+
+        footer {
+            background: #333;
+            padding: 10px;
+            text-align: center;
+            color: #777;
+            font-size: 0.9em;
+        }
+
+        .admin-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #2a2a2a;
+            border-radius: 5px;
+        }
+
+        .admin-section h3 {
+            color: #fff;
+        }
+
+        .admin-section form {
+            margin-top: 20px;
+        }
+
+        .admin-section input {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #444;
+            border-radius: 5px;
+            width: calc(100% - 24px);
+        }
+
+        .admin-section button {
+            background-color: #0b3d91;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .admin-section button:hover {
+            background-color: #0952d1;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Trade Center Admin Paneli</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="/adminhome">Ana Sayfa</a></li>
+        <li><a href="/adminallstock">Hisse Yönetimi</a></li>
+        <li><a href="/adminallusers">Kullanıcı Yönetimi</a></li>
+        <li><form action="/logout" method="post" style="display: inline;">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <button type="submit" style="background: none; border: none; color: white; cursor: pointer; font-weight: bold;">Çıkış Yap</button>
+        </form></li>
+    </ul>
+</nav>
+
+<main>
+    <h2>Hoş Geldiniz, Admin!</h2>
+    <p>Buradan hisse ekleyebilir ve düzenleyebilirsiniz.</p>
+
+    <div class="admin-section">
+        <h3>Hisse Ekle</h3>
+        <form th:action="@{/addstock}" method="post" th:object="${stock}">
+            <input type="text" name="symbol" th:field="*{symbol}" placeholder="Hisse Sembolü" required>
+            <input type="text" name="name" th:field="*{name}" placeholder="Hisse Adı" required>
+            <input type="number" name="price" th:field="*{price}" placeholder="Hisse Fiyatı" required step="0.01">
+
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+            <button type="submit">Ekle</button>
+        </form>
+
+
+    </div>
+</main>
+
+<footer>
+    <p>© 2024 Trade Center. Tüm hakları saklıdır.</p>
+</footer>
+</body>
+</html>
